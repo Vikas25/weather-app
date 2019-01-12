@@ -10,6 +10,16 @@ public class WeatherSummaryDto {
 
     private Weather weather;
 
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public WeatherSummaryDto(String country, String city, Weather weather) {
         this.country = country;
         this.city = city;

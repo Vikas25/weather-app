@@ -12,10 +12,6 @@
       "sourceMethod": "getApi()"
     }
   ],
-  "properties": [{
-    "name": "app.weather.api.key",
-    "type": "java.lang.String",
-    "sourceType": "com.example.weather.WeatherAppProperties$Api"
-  }],
+  "properties": [],
   "hints": []
 }

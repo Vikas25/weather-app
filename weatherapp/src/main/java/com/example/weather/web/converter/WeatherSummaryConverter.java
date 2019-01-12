@@ -4,6 +4,11 @@ import com.example.weather.integration.ows.Weather;
 import com.example.weather.web.dto.WeatherSummaryDto;
 import com.example.weather.web.entity.WeatherSummary;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class WeatherSummaryConverter {
 
     public static WeatherSummary dtoToEntity(WeatherSummaryDto weatherSummaryDto) {
@@ -30,6 +35,10 @@ public class WeatherSummaryConverter {
         weatherSummaryDto.setCity(weatherSummary.getCity());
         weatherSummaryDto.setCountry(weatherSummary.getCountry());
         weatherSummaryDto.setWeather(weather);
+
+        Timestamp timestamp = new Timestamp(weatherSummary.getTimestamp());
+        DateFormat fmt = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);
+        weatherSummaryDto.setDate(fmt.format(timestamp));
 
         return weatherSummaryDto;
     }

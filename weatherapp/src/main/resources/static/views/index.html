@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Main Page</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('packagetable').DataTable();
+        } );
+    </script>
+</head>
+<body ng-app="demo">
+<hr/>
+
+<div class="container" ng-controller="WeatherController">
+    <input type="text" ng-model="author" class="input-lg text-input" placeholder="Enter City"/>
+    <button ng-click="searchbyauthor()" class="btn-md btn">Search</button>
+<!--
+    <button ng-click="searchcities()" class="btn btn-sm btn-info">Search</button>
+-->
+    <div ng-repeat="cityData in allCities" class="row" style="border:1px solid gray; margin-top: 4px;">
+        <div class="col-md-2"><img src="http://openweathermap.org/img/w/{{cityData.weather.weatherIcon}}.png"/></div>
+        <div class="col-md-3">
+            <div class="typeNameLabel text-capitalize">{{cityData.city}}</div>
+            <div class="typeSummary" style="color:gray;">{{cityData.date}}</div>
+        </div>
+        <div class="col-md-5">{{cityData.weather.temperature}}</div>
+        <div class="col-md-2"  style="padding-top:10px;"><button ng-click="searchbyauthor()" class="btn btn-md btn-danger">Delete</button>
+    </div>
+</div>
+
+<!--
+<div class="container" ng-controller="UserController">
+    <div class="row">
+        <label>User</label> <input type="text" ng-model="userDto.userName" class="input-sm spacing"/>
+        <label>Skills</label> <input type="text" ng-model="skills" ng-list class="input-sm custom-width spacing"
+                                     placeholder="use comma to separate skills"/>
+        <button ng-click="saveUser()" class="btn btn-sm btn-info">Save User</button>
+    </div>
+    <hr/>
+    <div class="row">
+        <p>{{allUsers | json}}</p>
+    </div>
+    <hr/>
+    <div class="row" ng-repeat="user in allUsers">
+        <div class="">
+            <h3>{{user.userName}}</h3>
+            <span ng-repeat="skill in user.skillDtos" class="spacing">{{skill.skillName}}</span>
+        </div>
+    </div>
+</div>
+
+-->
+
+</body>
+<script src="js/lib/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/Controllers/WeatherController.js"></script>
+<script src="js/app/Services/WeatherService.js"></script>
+<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/app/app.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"/>
+</html>
