@@ -1,0 +1,30 @@
+{
+  "groups": [
+    {
+      "name": "app.weather",
+      "type": "com.example.weather.WeatherAppProperties",
+      "sourceType": "com.example.weather.WeatherAppProperties"
+    },
+    {
+      "name": "app.weather.api",
+      "type": "com.example.weather.WeatherAppProperties$Api",
+      "sourceType": "com.example.weather.WeatherAppProperties",
+      "sourceMethod": "getApi()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.weather.api.key",
+      "type": "java.lang.String",
+      "description": "API key of the OpenWeatherMap service.",
+      "sourceType": "com.example.weather.WeatherAppProperties$Api"
+    },
+    {
+      "name": "app.weather.locations",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Comma-separated list of locations to display. Each entry should have the\n form \"Country/City\".",
+      "sourceType": "com.example.weather.WeatherAppProperties"
+    }
+  ],
+  "hints": []
+}

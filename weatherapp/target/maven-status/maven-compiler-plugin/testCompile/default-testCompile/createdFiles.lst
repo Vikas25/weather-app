@@ -1,0 +1,3 @@
+com/example/weather/web/WeatherApiServiceTest.class
+com/example/weather/integration/ows/WeatherServiceTest.class
+com/example/weather/web/WeatherSummaryServiceTest.class
