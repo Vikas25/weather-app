@@ -24,6 +24,6 @@ public class WeatherApiController {
 	@RequestMapping("/weekly/{country}/{city}")
 	public WeatherForecast getWeatherForecast(@PathVariable String country,
 			@PathVariable String city) {
-		return this.weatherApiService.getWeatherForecast(country, city);
+		return weatherApiService.getWeatherForecast(country, city);
 	}
 }

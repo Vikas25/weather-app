@@ -1,6 +1,7 @@
-
 weatherapp/.idea/.name
 weatherapp/.idea/encodings.xml
 weatherapp/.idea/compiler.xml
 weatherapp/.idea/libraries/Maven__antlr_antlr_2_7_7.xml
-weatherapp/.idea/*
+weatherapp/.idea/
+./idea
+*.class

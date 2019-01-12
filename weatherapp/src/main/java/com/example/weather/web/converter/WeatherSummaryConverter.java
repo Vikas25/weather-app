@@ -25,6 +25,7 @@ public class WeatherSummaryConverter {
         weather.setTemperature(weatherSummary.getTemperature());
         weather.setWeatherId(weatherSummary.getCode());
         weather.setWeatherIcon(weatherSummary.getIcon());
+        weather.setName(weatherSummary.getCity());
 
         weatherSummaryDto.setCity(weatherSummary.getCity());
         weatherSummaryDto.setCountry(weatherSummary.getCountry());

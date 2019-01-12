@@ -53,4 +53,13 @@ public class WeatherSummaryDto {
         double celsiusTemp = this.weather.getTemperature() - 273.15;
         return String.format("%4.2f", celsiusTemp);
     }
+
+    @Override
+    public String toString() {
+        return "WeatherSummaryDto{" +
+                "country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", weather=" + weather +
+                '}';
+    }
 }
