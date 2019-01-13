@@ -1,6 +1,9 @@
 # README #
 # weather-app
-This is simple weather-app written using MVC pattern in Java using Springboot which provides APIs for searching city weather and save the results inside a database. Also provides a search functionality over database for retrieving logs.
+
+This is simple weather-app written using MVC pattern in Java8 using Springboot which provides APIs for searching city weather and save the results inside a database. Also provides a search functionality over database for retrieving logs.
+
+Frontend is written in Javascript using AngularJS and Bootstrap and is implemented using MVC architecture
 
 ### Version ###
 0.0.1
