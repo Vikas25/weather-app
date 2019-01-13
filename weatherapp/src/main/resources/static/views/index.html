@@ -12,23 +12,47 @@
         } );
     </script>
 </head>
+
 <body ng-app="demo">
 <hr/>
 
 <div class="container" ng-controller="WeatherController">
-    <input type="text" ng-model="author" class="input-lg text-input" placeholder="Enter City"/>
-    <button ng-click="searchbyauthor()" class="btn-md btn">Search</button>
-<!--
+    <div class="input-group">
+        <input type="text" ng-model="city" class="form-control" placeholder="Enter City"/>
+        <span class="input-group-btn">
+            <button ng-click="searchbycity()" class="btn btn-default">Search</button>
+        </span>
+    </div>
+        <!--
     <button ng-click="searchcities()" class="btn btn-sm btn-info">Search</button>
 -->
+
+    <div class="row" ng-repeat="newCity in cities"style="border:1px solid gray; margin-top: 4px;" ng-hide="cities[0].weather.temperature == null">
+        <div class="col-md-2"><img src="http://openweathermap.org/img/w/{{newCity.weather.weatherIcon}}.png"/></div>
+        <div class="col-md-3">
+            <div class="typeNameLabel text-capitalize">{{newCity.city}}</div>
+            <div class="typeSummary" style="color:gray;">{{newCity.date}}</div>
+        </div>
+        <div class="col-md-5">
+            <div class="typeNameLabel"><span style="background-color: slategray; color: white; padding-left: 2px">{{newCity.celsiusTemperature}}&#8451;</span> &nbsp; &nbsp;{{newCity.weather.weatherMain}}</div>
+            <div class="typeNameLabel">{{newCity.weather.wind}} m/s, {{newCity.weather.humidity}}%, {{newCity.weather.pressure}} hpa</div>
+        </div>
+        <div class="col-md-2"  style="padding-top:10px;"><button ng-click="deleteCityById(newCity.id)" class="btn btn-md btn-danger">Delete</button>
+        </div>
+    </div>
+
     <div ng-repeat="cityData in allCities" class="row" style="border:1px solid gray; margin-top: 4px;">
         <div class="col-md-2"><img src="http://openweathermap.org/img/w/{{cityData.weather.weatherIcon}}.png"/></div>
         <div class="col-md-3">
             <div class="typeNameLabel text-capitalize">{{cityData.city}}</div>
             <div class="typeSummary" style="color:gray;">{{cityData.date}}</div>
         </div>
-        <div class="col-md-5">{{cityData.weather.temperature}}</div>
-        <div class="col-md-2"  style="padding-top:10px;"><button ng-click="searchbyauthor()" class="btn btn-md btn-danger">Delete</button>
+        <div class="col-md-5">
+            <div class="typeNameLabel"><span style="background-color: slategray; color: white; padding-left: 2px">{{cityData.celsiusTemperature}}&#8451; </span> &nbsp;&nbsp; {{cityData.weather.weatherMain}}</div>
+            <div class="typeNameLabel">{{cityData.weather.wind}} m/s, {{cityData.weather.humidity}}%, {{cityData.weather.pressure}} hpa</div>
+        </div>
+        <div class="col-md-2"  style="padding-top:10px;"><button ng-click="deleteCityById(cityData.id)" class="btn btn-md btn-danger">Delete</button>
+        </div>
     </div>
 </div>
 

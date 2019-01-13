@@ -1,11 +1,8 @@
 package com.example.weather.integration.ows;
 
-import java.net.URI;
-
 import com.example.weather.WeatherAppProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
@@ -14,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
+
+import java.net.URI;
 
 @Service
 public class WeatherService {
@@ -36,10 +35,10 @@ public class WeatherService {
 		this.apiKey = properties.getApi().getKey();
 	}
 
-	@Cacheable("weather")
 	public Weather getWeather(String country, String city) {
 		logger.info("Requesting current weather for {}/{}", country, city);
 		URI url = new UriTemplate(WEATHER_URL).expand(city, country, this.apiKey);
+		String s =  invoke(url, String.class);
 		return invoke(url, Weather.class);
 	}
 

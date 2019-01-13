@@ -3,23 +3,14 @@
 var module = angular.module('demo.weatherController', []);
 module.controller("WeatherController", [ "$scope", "WeatherService",
     function($scope, WeatherService) {
-
-        $scope.WeatherSummaryDto = {
-            city : "London",
-            country: "UK",
-            weather: {
-                "temperature": 282.75,
-                "weatherId": 803,
-                "weatherIcon": "04d",
-                "name": "london",
-                "timestamp": "+51002-02-18T01:20:00Z"
-            }
-        };
-
-        $scope.author= null;
-       $scope.searchbyauthor = function() {
-           PackageService.getPackgesByAuthor($scope.author).then(function (value) {
-               $scope.allPackages=value.data;
+        $scope.city = null;
+        $scope.id = 0;
+        $scope.cities = [];
+       $scope.searchbycity = function() {
+           WeatherService.getWeatherByCity($scope.city).then(function (value) {
+               $scope.city = value.data;
+               $scope.cities.unshift($scope.city);
+               $scope.city= null;
                console.log(value.data);
            }, function (reason) {
                console.log("error occured");
@@ -37,5 +28,12 @@ module.controller("WeatherController", [ "$scope", "WeatherService",
                 console.log("no callback");
             });
         });
+
+
+       $scope.deleteCityById = function (id) {
+           console.log(id);
+           WeatherService.deleteByCity(id);
+           location.reload();
+       }
 
     } ]);

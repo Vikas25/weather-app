@@ -6,6 +6,7 @@ import com.example.weather.web.service.WeatherApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,4 +27,10 @@ public class WeatherApiController {
 			@PathVariable String city) {
 		return weatherApiService.getWeatherForecast(country, city);
 	}
+
+	@RequestMapping(value = "/city/{id}",method = RequestMethod.DELETE)
+	public void deleteById(@PathVariable Integer id){
+		weatherApiService.deleteWeatherSummary(id);
+	}
+
 }

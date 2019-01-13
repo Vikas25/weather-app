@@ -28,6 +28,19 @@ public class WeatherSummary {
 	@Column
 	private Long timestamp;
 
+	@Column
+	private String humidity;
+
+	@Column
+	private String pressure;
+
+	@Column
+	private String wind;
+
+	@Column
+	private String weatherMain;
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -82,6 +95,38 @@ public class WeatherSummary {
 
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public String getHumidity() {
+		return humidity;
+	}
+
+	public void setHumidity(String humidity) {
+		this.humidity = humidity;
+	}
+
+	public String getPressure() {
+		return pressure;
+	}
+
+	public void setPressure(String pressure) {
+		this.pressure = pressure;
+	}
+
+	public String getWind() {
+		return wind;
+	}
+
+	public void setWind(String wind) {
+		this.wind = wind;
+	}
+
+	public String getWeatherMain() {
+		return weatherMain;
+	}
+
+	public void setWeatherMain(String weatherMain) {
+		this.weatherMain = weatherMain;
 	}
 
 	public WeatherSummary(){

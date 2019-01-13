@@ -19,6 +19,11 @@ public class WeatherSummaryConverter {
         weatherSummary.setIcon(weatherSummaryDto.getWeather().getWeatherIcon());
         weatherSummary.setTemperature(weatherSummaryDto.getWeather().getTemperature());
         weatherSummary.setTimestamp(weatherSummaryDto.getWeather().getTimestamp().toEpochMilli());
+        weatherSummary.setId(weatherSummaryDto.getId());
+        weatherSummary.setWeatherMain(weatherSummaryDto.getWeather().getWeatherMain());
+        weatherSummary.setHumidity(weatherSummaryDto.getWeather().getHumidity());
+        weatherSummary.setPressure(weatherSummaryDto.getWeather().getPressure());
+        weatherSummary.setWind(weatherSummaryDto.getWeather().getWind());
         return weatherSummary;
     }
 
@@ -31,10 +36,15 @@ public class WeatherSummaryConverter {
         weather.setWeatherId(weatherSummary.getCode());
         weather.setWeatherIcon(weatherSummary.getIcon());
         weather.setName(weatherSummary.getCity());
+        weather.setWeatherMain(weatherSummary.getWeatherMain());
+        weather.setPressure(weatherSummary.getPressure());
+        weather.setHumidity(weatherSummary.getHumidity());
+        weather.setWind(weatherSummary.getHumidity());
 
         weatherSummaryDto.setCity(weatherSummary.getCity());
         weatherSummaryDto.setCountry(weatherSummary.getCountry());
         weatherSummaryDto.setWeather(weather);
+        weatherSummaryDto.setId(weatherSummary.getId());
 
         Timestamp timestamp = new Timestamp(weatherSummary.getTimestamp());
         DateFormat fmt = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);

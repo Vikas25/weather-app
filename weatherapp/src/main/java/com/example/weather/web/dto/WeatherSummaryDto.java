@@ -4,6 +4,8 @@ import com.example.weather.integration.ows.Weather;
 
 public class WeatherSummaryDto {
 
+    private Integer id;
+
     private String country;
 
     private String city;
@@ -12,12 +14,22 @@ public class WeatherSummaryDto {
 
     private String date;
 
+    private String main;
+
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public WeatherSummaryDto(String country, String city, Weather weather) {
@@ -48,6 +60,14 @@ public class WeatherSummaryDto {
 
     public Weather getWeather() {
         return weather;
+    }
+
+    public String getMain() {
+        return main;
+    }
+
+    public void setMain(String main) {
+        this.main = main;
     }
 
     public void setWeather(Weather weather) {

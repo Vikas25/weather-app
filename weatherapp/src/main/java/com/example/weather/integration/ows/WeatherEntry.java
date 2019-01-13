@@ -1,12 +1,12 @@
 package com.example.weather.integration.ows;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class WeatherEntry implements Serializable {
 
@@ -17,6 +17,14 @@ public class WeatherEntry implements Serializable {
 	private Integer weatherId;
 
 	private String weatherIcon;
+
+	private String weatherMain;
+
+	private String wind;
+
+	private String humidity;
+
+	private String pressure;
 
 	@JsonProperty("timestamp")
 	public Instant getTimestamp() {
@@ -39,9 +47,12 @@ public class WeatherEntry implements Serializable {
 		this.temperature = temperature;
 	}
 
-	@JsonProperty("main")
-	public void setMain(Map<String, Object> main) {
-		setTemperature(Double.parseDouble(main.get("temp").toString()));
+	public String getWeatherMain() {
+		return weatherMain;
+	}
+
+	public void setWeatherMain(String weatherMain) {
+		this.weatherMain = weatherMain;
 	}
 
 	public Integer getWeatherId() {
@@ -60,11 +71,46 @@ public class WeatherEntry implements Serializable {
 		this.weatherIcon = weatherIcon;
 	}
 
+	public String getWind() {
+		return wind;
+	}
+
+	public void setWind(String wind) {
+		this.wind = wind;
+	}
+
+	public String getHumidity() {
+		return humidity;
+	}
+
+	public void setHumidity(String humidity) {
+		this.humidity = humidity;
+	}
+
+	public String getPressure() {
+		return pressure;
+	}
+
+	public void setPressure(String pressure) {
+		this.pressure = pressure;
+	}
+
 	@JsonProperty("weather")
 	public void setWeather(List<Map<String, Object>> weatherEntries) {
 		Map<String, Object> weather = weatherEntries.get(0);
 		setWeatherId((Integer) weather.get("id"));
 		setWeatherIcon((String) weather.get("icon"));
+		setWeatherMain((String) weather.get("main"));
 	}
 
+	@JsonSetter("wind")
+	public void setWindSpeed(Map<String, Object> windEntries){
+		this.wind = ((String) windEntries.get("speed").toString());
+	}
+
+	@JsonSetter("main")
+	public void setMain(Map<String, Object> mainEntries){
+		this.humidity = ((String) mainEntries.get("humidity").toString());
+		this.pressure = ((String) mainEntries.get("pressure").toString());
+	}
 }

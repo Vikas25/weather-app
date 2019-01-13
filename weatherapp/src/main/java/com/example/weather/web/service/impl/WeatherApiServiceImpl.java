@@ -10,6 +10,11 @@ import com.example.weather.web.service.WeatherApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 @Service
 public class WeatherApiServiceImpl implements WeatherApiService{
 
@@ -23,12 +28,22 @@ public class WeatherApiServiceImpl implements WeatherApiService{
     public WeatherSummaryDto getWeather(String country, String city) {
         Weather weather = weatherService.getWeather(country, city);
         WeatherSummaryDto weatherSummaryDto = new WeatherSummaryDto(country, city, weather);
-        weatherSummaryDao.save(WeatherSummaryConverter.dtoToEntity(weatherSummaryDto));
+
+        Timestamp timestamp = Timestamp.from(weather.getTimestamp());
+        DateFormat fmt = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);
+        weatherSummaryDto.setDate(fmt.format(timestamp));
+        weatherSummaryDto.setId(weatherSummaryDao.save(WeatherSummaryConverter.dtoToEntity(weatherSummaryDto)).getId());
+
         return weatherSummaryDto;
     }
 
     @Override
     public WeatherForecast getWeatherForecast(String country, String city) {
         return weatherService.getWeatherForecast(country, city);
+    }
+
+    public void deleteWeatherSummary(Integer weatherSummaryId){
+        weatherSummaryDao.deleteById(weatherSummaryId);
+        return;
     }
 }

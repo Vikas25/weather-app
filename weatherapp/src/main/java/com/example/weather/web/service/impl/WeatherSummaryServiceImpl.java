@@ -8,7 +8,6 @@ import com.example.weather.web.service.WeatherSummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +21,7 @@ public class WeatherSummaryServiceImpl implements WeatherSummaryService {
     @Override
     public List<WeatherSummaryDto> getAllCityWeather() {
         List<WeatherSummary> weatherSummaryList = new ArrayList<>();
-        weatherSummaryList = weatherSummaryDao.findAll();
+        weatherSummaryList = weatherSummaryDao.findAllByOrderByIdDesc();
         List<WeatherSummaryDto> weatherSummaryDtoList = new ArrayList<>();
         weatherSummaryDtoList = weatherSummaryList.stream().map(WeatherSummaryConverter::entityToDto).collect(Collectors.toList());
         return weatherSummaryDtoList;

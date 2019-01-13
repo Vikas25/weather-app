@@ -6,9 +6,13 @@ angular.module('demo.weatherService', []).factory('WeatherService',
         service.getAllCities = function() {
             return $http.get(CONSTANTS.getAllCities);
         }
-        service.getPackgesByAuthor = function(author) {
-            var url = CONSTANTS.getPackgesByAuthor + author;
+        service.getWeatherByCity = function(city) {
+            var url = CONSTANTS.getWeatherByCity + city;
             return $http.get(url);
+        }
+        service.deleteByCity = function (id) {
+            var url = CONSTANTS.deleteByCity + id;
+            return $http.delete(url);
         }
         return service;
     } ]);
