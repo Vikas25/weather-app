@@ -22,12 +22,12 @@ Make sure that you have Java8 installed and a compatible JRE to run.
 	`spring.datasource.password= `
 
 
-2. Go to mysql server and create schema 'cran' using 'CREATE DATABASE weatherapp'
+2. Go to mysql server and create schema 'weatherapp' using 'CREATE DATABASE weatherapp'
 
 Note: 'schema.sql' file contains DDL commands.
 
 ### Deployment instructions ###
-1. Go to `crandemo` directory and build using `mvn clean install`
+1. Go to `weatherapp` directory and build using `mvn clean install`
 2. Go to `target` folder and hit `java -jar bootdemo-0.0.1-SNAPSHOT.jar`
 3. Open browser and go to 'http://localhost:8080/home'
 
