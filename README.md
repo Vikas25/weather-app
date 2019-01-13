@@ -6,7 +6,7 @@ This is simple weather-app written using MVC pattern in Java8 using Springboot w
 Frontend is written in Javascript using AngularJS and Bootstrap and is implemented using MVC architecture
 
 Here is a screenshot of the application:
-
+![Application UI image](https://github.com/Vikas25/weather-app/blob/master/Application%20UI.png)
 
 ### Version ###
 0.0.1
