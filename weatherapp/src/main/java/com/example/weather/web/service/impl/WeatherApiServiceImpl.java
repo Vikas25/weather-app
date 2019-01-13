@@ -7,6 +7,8 @@ import com.example.weather.web.converter.WeatherSummaryConverter;
 import com.example.weather.web.dao.WeatherSummaryDao;
 import com.example.weather.web.dto.WeatherSummaryDto;
 import com.example.weather.web.service.WeatherApiService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +26,22 @@ public class WeatherApiServiceImpl implements WeatherApiService{
     @Autowired
     private WeatherSummaryDao weatherSummaryDao;
 
+    private static final Logger logger = LoggerFactory.getLogger(WeatherService.class);
+
     @Override
     public WeatherSummaryDto getWeather(String country, String city) {
         Weather weather = weatherService.getWeather(country, city);
+
+        logger.info("Getting current Weather for Country:{} , City:{}", country, city);
+
         WeatherSummaryDto weatherSummaryDto = new WeatherSummaryDto(country, city, weather);
 
         Timestamp timestamp = Timestamp.from(weather.getTimestamp());
         DateFormat fmt = new SimpleDateFormat("MMMM dd, yyyy", Locale.US);
         weatherSummaryDto.setDate(fmt.format(timestamp));
         weatherSummaryDto.setId(weatherSummaryDao.save(WeatherSummaryConverter.dtoToEntity(weatherSummaryDto)).getId());
+
+        logger.info("Current Weather for Country:{} , City:{} => {}", country, city, weatherSummaryDto);
 
         return weatherSummaryDto;
     }

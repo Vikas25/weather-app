@@ -112,5 +112,6 @@ public class WeatherEntry implements Serializable {
 	public void setMain(Map<String, Object> mainEntries){
 		this.humidity = ((String) mainEntries.get("humidity").toString());
 		this.pressure = ((String) mainEntries.get("pressure").toString());
+		this.temperature = ((double) mainEntries.get("temp"));
 	}
 }

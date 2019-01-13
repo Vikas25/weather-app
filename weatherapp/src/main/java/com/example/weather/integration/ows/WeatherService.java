@@ -35,8 +35,9 @@ public class WeatherService {
 		this.apiKey = properties.getApi().getKey();
 	}
 
+	@Cacheable("weather")
 	public Weather getWeather(String country, String city) {
-		logger.info("Requesting current weather for {}/{}", country, city);
+		logger.info("Requesting current weather from OWP for {}/{}", country, city);
 		URI url = new UriTemplate(WEATHER_URL).expand(city, country, this.apiKey);
 		String s =  invoke(url, String.class);
 		return invoke(url, Weather.class);

@@ -16,6 +16,8 @@ public class WeatherSummaryDto {
 
     private String main;
 
+    private String celsiusTemperature;
+
     public String getDate() {
         return date;
     }
@@ -77,6 +79,10 @@ public class WeatherSummaryDto {
     public String getFahrenheitTemperature() {
         double fahrenheitTemp = (this.weather.getTemperature() * 1.8) - 459.67;
         return String.format("%4.2f", fahrenheitTemp);
+    }
+
+    public void setCelsiusTemperature(String celsiusTemperature) {
+        this.celsiusTemperature = celsiusTemperature;
     }
 
     public String getCelsiusTemperature() {
