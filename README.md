@@ -30,7 +30,7 @@ Make sure that you have Java8 installed and a compatible JRE to run.
 
 2. Go to mysql server and create schema 'weatherapp' using 'CREATE DATABASE weatherapp'
 
-Note: 'schema.sql' file contains DDL commands.
+Note: [schema.sql](https://github.com/Vikas25/weather-app/blob/master/weatherapp/src/main/resources/schema.sql) file contains DDL commands.
 
 ### Deployment instructions ###
 1. Go to `weatherapp` directory and build using `mvn clean install`
